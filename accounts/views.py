@@ -21,17 +21,23 @@ def products(request):
 
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
-    
     orders = customer.order_set.all()
-    #car_name = Car.Make()
     order_count = orders.count()
+    
      
     context = {
         'customer': customer,
         'orders': orders,
         'order_count':order_count,
         
-        #'car_name': car_name,
+        
+      
     }
     return render(request, 'accounts/customer.html', context)
+
+def createOrder(request):
+    context = {
+
+    }
+    return render(request, 'accounts/order_form.html')
 

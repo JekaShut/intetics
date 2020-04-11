@@ -17,10 +17,13 @@
 	
 	<div class="col-md">
 		<div class="card card-body">
-			<h5>Contact Information</h5>
+			<h5>Information</h5>
 			<hr>
-			<p>Email: {{customer.email}}</p> 
+			<p>Date of bith: {{customer.date_of_birth | date:"F d Y"}}</p>
+			<p>Address: {{customer.adress}}</p>
 			<p>Phone: {{customer.phone}}</p>
+			<p>Email: {{customer.email}}</p> 
+			<p></p>
 		</div>
 	</div>
 	
@@ -64,8 +67,8 @@
 				</tr>
 				{% for order in orders %}
 				<tr>
-					<th>{{order.car_name}}</th>
-					<th>{{order.car_model}}</th>
+					<th>{{order.make}}</th>
+					<th>{{order.Order_amount}}</th>
 					<th>{{order.car_year}}</th>
 					<th>{{order.car_VIN}}</th>
 					<th>{{order.Order_status}}</th>

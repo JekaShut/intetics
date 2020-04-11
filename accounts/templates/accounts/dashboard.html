@@ -6,7 +6,7 @@
 
 <br>
 
-<div class="row">
+<div class="row" style="padding-top: 10px;margin-top: 0px;padding-left: 10px;margin-right: 10px;">
 	<div class="col-md-5">
 		<h5>CUSTOMERS:</h5>
 		<hr>
@@ -14,12 +14,14 @@
 			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
 			<table class="table table-sm">
 				<tr>
+					<th></th>
 					<th>Name</th>
 					<th>Surname</th> 
 					<th>Phone</th>
 				</tr>
 				{% for customer in customers %}
 					<tr>
+						<td><a href="{% url 'customer' customer.id %}" class="btn btn-info  btn-sm btn-block">view</a></td>
 						<td>{{customer.first_name}}</td>
 						<td>{{customer.last_name}}</td>
 						<td>{{customer.phone}}</td>
@@ -35,7 +37,7 @@
 		<h5>LAST 5 ORDERS</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_order' %}">Create Order</a>
 			<table class="table table-sm">
 				<tr>
 					<th>Car</th>
@@ -48,7 +50,7 @@
 				
 				{% for order in orders %}
 					<tr>
-						<td>{{order.car}}</td>
+						<td>{{ order.car }}</td>
 						<td>{{order.Date}}</td>
 						<td>${{order.Order_amount}}</td>
 						<td>{{order.Order_status}}</td>

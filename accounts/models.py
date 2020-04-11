@@ -22,7 +22,9 @@ class Car(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return str(self.Make) + " " + str(self.Model)
+        return str(self.Make) + str(self.Model)
+    
+    
 
 class Order(models.Model):
     STATUS = (
@@ -30,17 +32,13 @@ class Order(models.Model):
         ('In Progress', 'In Progress'),
         ('Cancelled', 'Cancelled')
     )
+    
+    car = models.ForeignKey(Car, null=True, on_delete=models.SET_NULL)
     customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    #car_name = Car.Make
-    #car = models.ForeignKey(Car.Make, null=True, on_delete=models.SET_NULL) #######
     Date = models.DateTimeField(null=True)
     Order_amount = models.FloatField(max_length=64, null=True)
     Order_status = models.CharField(max_length=64, null=True, choices=STATUS)
 
-    #car_name = models.CharField(Customer, null=True, max_length=64)
-	#car_model =
-	#car_year =
-	#car_VIN =
 
     def __str__(self):
         return str(self.Order_amount) + " " + str(self.Order_status)
