@@ -41,6 +41,7 @@
 			<table class="table table-sm">
 				<tr>
 					<th>Car</th>
+					<th>Model</th>
 					<th>Date</th>
 					<th>Amount</th>
 					<th>Status</th>
@@ -50,12 +51,13 @@
 				
 				{% for order in orders %}
 					<tr>
-						<td>{{ order.car }}</td>
-						<td>{{order.Date}}</td>
+						<td>{{order.car.Make}}</td>
+						<td>{{order.car.Model}}</td>
+						<td>{{order.date | date:"F d Y"}}</td>
 						<td>${{order.Order_amount}}</td>
 						<td>{{order.Order_status}}</td>
-						<td><a class="btn btn-primary  btn-sm btn-block" href="">Update</a></td>
-						<td><a class="btn btn-danger  btn-sm btn-block" href="">Remove</a></td>
+						<td><a class="btn btn-primary  btn-sm btn-block" href="{% url 'update_order' order.id %}">Update</a></td>
+						<td><a class="btn btn-danger  btn-sm btn-block" href="{% url 'delete_order' order.id %}">Remove</a></td>
 						
 					</tr>
 				{% endfor %}

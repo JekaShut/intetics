@@ -22,7 +22,9 @@ class Car(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return str(self.Make) + str(self.Model)
+        return str(self.Make) + " " + str(self.Model)
+    #def x(self):    
+    #    return str(self.VIN)
     
     
 
@@ -34,11 +36,11 @@ class Order(models.Model):
     )
     
     car = models.ForeignKey(Car, null=True, on_delete=models.SET_NULL)
+    date = models.DateTimeField(auto_now_add=True, null=True)
     customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    Date = models.DateTimeField(null=True)
     Order_amount = models.FloatField(max_length=64, null=True)
     Order_status = models.CharField(max_length=64, null=True, choices=STATUS)
 
 
     def __str__(self):
-        return str(self.Order_amount) + " " + str(self.Order_status)
+        return self.car.Make
