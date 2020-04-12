@@ -40,7 +40,10 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
     Order_amount = models.FloatField(max_length=64, null=True)
     Order_status = models.CharField(max_length=64, null=True, choices=STATUS)
+    
 
 
     def __str__(self):
         return self.car.Make
+
+
