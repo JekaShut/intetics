@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 #from accounts.models import *
 from .models import Customer, Car, Order
-from .forms import OrderForm, CustomerForm
+from .forms import OrderForm, CustomerForm, CarForm 
 from .filters import OrderFilter, CustomerFilter
 # Create your views here.
 
@@ -17,15 +17,7 @@ def home(request):
 
     return render(request, 'accounts/dashboard.html', context)
 
-def products(request):
-    cars = Car.objects.all()
 
-    context = {
-            'cars':cars,
-            
-    }
-
-    return render(request, 'accounts/products.html', context)
 
 def orders(request):
     order = Order.objects.all()
@@ -135,4 +127,65 @@ def deleteCustomer(request, pk):
     context = {'item':сustomerDel}
     return render(request, 'accounts/delete_customer.html', context)
 
+def createCar(request):
+    form = CarForm()
+    if request.method == 'POST':
+        form = CarForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request, 'accounts/car_form.html', context)
 
+
+def updateCar(request, pk):
+    
+    car = Car.objects.get(id=pk)
+    form = CarForm(instance=car)# передает значения в форму
+    if request.method == 'POST':
+        form = CarForm(request.POST, instance=car)# передает значения в форму
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+
+    return render(request, 'accounts/car_form.html', context)
+
+def deleteCar(request, pk):
+    
+    car = Car.objects.get(id=pk)
+    orders = Order.objects.all().filter()
+    order_list = []
+    backLink = '/products'
+    warn = 'Be careful! You have some orders for that car.'
+    for elem in orders:                 # here I did not find a way to check for orders for a deleted machine in another way. Do not judge strictly ^_^
+        order_list.append(str(elem))
+
+    if request.method == "POST":
+        if str(car) in order_list:
+            context = {
+                    'warn': warn,
+                    'backLink' : backLink,
+                }
+            return render(request, 'accounts/products_error.html', context)     # if orders exists
+        else:
+            car.delete()                                                        # if not
+            return redirect('/products')
+    context = {
+                'item': car,
+                'orders': orders,
+                'warn': warn,
+                }
+    return render(request, 'accounts/delete_car.html', context)
+    
+def productsError(request):
+    error = '1'
+    return render(request, 'accounts/products_error.html')
+
+
+def products(request):
+    cars = Car.objects.all()
+    context = {
+            'cars':cars
+    }
+    return render(request, 'accounts/products.html', context)

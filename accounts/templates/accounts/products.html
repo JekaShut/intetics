@@ -4,7 +4,7 @@
 
 		<br>
 
-		<div class="row">
+		<div class="row" style="padding-top: 10px;margin-top: 0px;padding-left: 10px;margin-right: 10px;">
 			<div class="col-md">
 				<div class="card card-body">
 					<h5>Products</h5>
@@ -15,21 +15,27 @@
 							<td></td> <!--product-->
 							<td></td><!--category-->
 							<td></td><!---->
-							<td><a class="btn btn-info  btn-sm btn-block" href="">Add car</a></td><!---->
+							<td></td>
+							<td></td>
+							<td><a class="btn btn-info  btn-sm btn-block" href="{% url 'create_car' %}">Add car</a></td>
 						</tr>
 						<tr>
 							<th>Make</th>
 							<th>Model</th>
 							<th>Year</th>
-							<th>Orders</th>
+							<th>VIN</th>
+							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 
-						{% for i in cars %}
+						{% for car in cars %}
 							<tr>
-								<td>{{i.Make}}</td> <!--product-->
-								<td>{{i.Model}}</td><!--category-->
-								<td>{{i.Year}}</td><!---->
-								<td><a class="btn btn-success  btn-sm btn-block" href="">View<br>orders</a></td><!---->
+								<td>{{car.Make}}</td> <!--product-->
+								<td>{{car.Model}}</td><!--category-->
+								<td>{{car.Year}}</td><!---->
+								<td>{{car.VIN}}</td>
+								<td><a class="btn btn-primary btn-sm btn-block" href="{% url 'update_car' car.id %}">edit</a></td><!---->
+								<td><a class="btn btn-danger  btn-sm btn-block" href="{% url 'delete_car' car.id %}">delete</a></td>
 							</tr>
 						{% endfor %} 
 						

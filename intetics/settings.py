@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'django_filters',
+    'bootstrapform',
     
 ]
 
@@ -80,6 +81,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'default': {
+            #'ENGINE': 'djongo',
+            #'NAME': 'db',
+            #'HOST': 'mongodb+srv://Eugene:e4bkaRwYGp6Ei9lA@cluster0-dunjh.mongodb.net/test',
+            #'USER': 'Eugene',
+            #'PASSWORD': 'e4bkaRwYGp6Ei9lA',
+    #}  mongodb+srv://Eugene:e4bkaRwYGp6Ei9lA@cluster0-dunjh.mongodb.net/test?retryWrites=true&w=majority
     }
 }
 
