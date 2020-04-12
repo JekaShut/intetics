@@ -21,7 +21,7 @@
 				</tr>
 				{% for customer in customers %}
 					<tr>
-						
+						<td><a href="{% url 'customer' customer.id %}" class="btn btn-info  btn-sm btn-block">view</a></td>
 						<td>{{customer.first_name}}</td>
 						<td>{{customer.last_name}}</td>
 						<td>{{customer.phone}}</td>
