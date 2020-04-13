@@ -3,10 +3,10 @@
 
 {% block content %}
 
-<form action="" method="POST">
+<form action="" method="POST" class="px-4 py-3">
     {% csrf_token %}
     {{form}}
-<input type="submit" name="Submit">
+<input type="submit" name="Submit" value="Submit">
 </form>
 
 {% endblock %}

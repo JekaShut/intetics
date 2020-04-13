@@ -6,7 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Customer(models.Model):
     first_name = models.CharField(max_length=64, null=True)
     last_name = models.CharField(max_length=64, null=True)
-    date_of_birth = models.DateTimeField(null=True)
+    date_of_birth = models.DateTimeField(default='Year-MM-DD')
     adress = models.CharField(max_length=64, null=True)
     phone = models.CharField(max_length=64, null=True)
     email = models.EmailField(max_length=64, null=True)
