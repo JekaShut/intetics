@@ -2,7 +2,7 @@
 Test task
 
 #connect to DB
-0. You must have mongodb installed "https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.2-signed.msi/download"
+0. Make sure you have installed mongoDB installed "https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.2-signed.msi/download"
 1. Unpack db to D:\data 
 2. Open CMD in “C:\Program Files\MongoDB\Server\3.6\bin>” folder and paste : "mongod —dbpath D:\data"
 3. python manage.py runserver
